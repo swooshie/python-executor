@@ -80,22 +80,24 @@ Expected
 Cloud Run restricts namespace creation, so nsjail is configured with all namespace-related flags disabled.
 
 Effective nsjail command:
-/usr/bin/nsjail
--Mo
-–quiet
-–time_limit 5
-–chroot /
-–disable_proc
-–disable_clone_newns
-–disable_clone_newuser
-–disable_clone_newcgroup
-–disable_clone_newipc
-–disable_clone_newuts
-–disable_clone_newnet
-–disable_clone_newpid
-–user 65534
-–group 65534
-– /usr/bin/python3 /app/runner.py
+
+    /usr/bin/nsjail \
+        -Mo \
+        --quiet \
+        --time_limit 5 \
+        --chroot / \
+        --disable_proc \
+        --disable_clone_newns \
+        --disable_clone_newuser \
+        --disable_clone_newcgroup \
+        --disable_clone_newipc \
+        --disable_clone_newuts \
+        --disable_clone_newnet \
+        --disable_clone_newpid \
+        --user 65534 \
+        --group 65534 \
+        -- \
+        /usr/bin/python3 /app/runner.py
 
 Security guarantees:
 
@@ -110,13 +112,13 @@ Security guarantees:
 
 ## Project Structure
 
-python-executor/
-│
-├── app.py
-├── runner.py
-├── Dockerfile
-├── requirements.txt
-└── README.md
+    python-executor/
+    │
+    ├── app.py
+    ├── runner.py
+    ├── Dockerfile
+    ├── requirements.txt
+    └── README.md
 
 ---
 
